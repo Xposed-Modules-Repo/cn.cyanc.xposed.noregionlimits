@@ -22,8 +22,8 @@ android {
         applicationId = "cn.cyanc.xposed.noregionlimits"
         minSdk = 28
         targetSdk = 33
-        versionCode = 1211
-        versionName = "v1.2.11"
+        versionCode = 1212
+        versionName = "v1.2.12"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations += setOf()
