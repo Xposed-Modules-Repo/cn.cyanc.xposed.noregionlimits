@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# -keep class cn.cyanc.xposed.noregionlimits.** { *; }
+-keep class cn.cyanc.xposed.noregionlimits.LocaleAdapter
+-keep class cn.cyanc.xposed.noregionlimits.MainActivity
+-keep class cn.cyanc.xposed.noregionlimits.SettingsActivity
+-keep class cn.cyanc.xposed.noregionlimits.HookMain
+-keep class cn.cyanc.xposed.noregionlimits.ModuleStatus { *; }
+-keep class cn.cyanc.xposed.noregionlimits.ModuleStatus$Status { *; }
+-keepclassmembers class cn.cyanc.xposed.noregionlimits.ModuleStatus$Status { *; }
+-keepclassmembers class cn.cyanc.xposed.noregionlimits.ModuleStatus { *; }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.*
 import android.widget.*
@@ -115,13 +116,14 @@ class ModuleStatus {
         private fun isModuleEnabled() = false
         val moduleEnabled by lazy(::isModuleEnabled)
         private fun getXposedVersion() = -1
-        val xposedVersion by lazy(::getXposedVersion)
-        private fun getXposedExecutorName() = "unknown"
-        val xposedExecutorName by lazy(::getXposedExecutorName)
+        val apiLevel by lazy(::getXposedVersion)
+        private fun getBridgeName() = "unknown"
+        val executorName by lazy(::getBridgeName)
     }
 }
 
 class MainActivity : AppCompatActivity() {
+    val Int.dp2px: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -185,15 +187,19 @@ class MainActivity : AppCompatActivity() {
                 setTextColor(resolveForeground())
             }
             findViewById<TextView>(R.id.moduleFrameworkInfoText).apply {
+                text = resources.getQuantityString(
+                    R.plurals.module_activator_format,
+                    2,
+                    ModuleStatus.executorName,
+                    ModuleStatus.apiLevel
+                )
                 setTextColor(resolveForeground())
-                val ver = ModuleStatus.xposedVersion
+                if (!enabled) visibility = View.INVISIBLE
             }
         }
 
-        findViewById<TextInputLayout>(R.id.searchInput).addOnEditTextAttachedListener {
-            it.editText?.addTextChangedListener { edit ->
-                (lv.adapter as LocaleAdapter).filter.filter(edit)
-            }
+        findViewById<TextInputLayout>(R.id.searchInput).editText?.addTextChangedListener { edit ->
+            (lv.adapter as LocaleAdapter).filter.filter(edit)
         }
 
         binding.fab.setOnClickListener {

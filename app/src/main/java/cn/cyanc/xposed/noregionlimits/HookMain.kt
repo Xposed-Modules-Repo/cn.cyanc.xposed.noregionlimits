@@ -1,11 +1,12 @@
 package cn.cyanc.xposed.noregionlimits
 
+import androidx.annotation.Keep
 import de.robv.android.xposed.*
 import de.robv.android.xposed.IXposedHookZygoteInit.StartupParam
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 import java.util.*
-import com.highcapable.yukihookapi.hook.core.api.compat.
 
+@Keep
 class HookMain : IXposedHookLoadPackage, IXposedHookZygoteInit {
 
     private val prefixFilteredList = mutableListOf(
@@ -19,12 +20,12 @@ class HookMain : IXposedHookLoadPackage, IXposedHookZygoteInit {
         "com.google.android",
         "de.robv.android",
         "org.lsposed"
-        )
+    )
 
     companion object {
-        private fun getPref(path: String) : XSharedPreferences? {
+        private fun getPref(path: String): XSharedPreferences? {
             val pref = XSharedPreferences("cn.cyanc.xposed.noregionlimits", path)
-            return if(pref.file.canRead()) pref else null
+            return if (pref.file.canRead()) pref else null
         }
 
         // lazy loads when needed
@@ -32,25 +33,25 @@ class HookMain : IXposedHookLoadPackage, IXposedHookZygoteInit {
     }
 
     init {
-        if (prefConf?.getBoolean("hack_android", false) == true){
+        if (prefConf?.getBoolean("hack_android", false) == true) {
             prefixFilteredList.remove("android.")
             prefixFilteredList.remove("com.android.")
         }
-        if (prefConf?.getBoolean("hack_android_content", true) != false){
+        if (prefConf?.getBoolean("hack_android_content", true) != false) {
             prefixFilteredList.remove("android.view.")
             prefixFilteredList.remove("android.content.")
         }
-        if (prefConf?.getBoolean("hack_androidx", false) == true){
+        if (prefConf?.getBoolean("hack_androidx", false) == true) {
             prefixFilteredList.remove("androidx.")
         }
-        if (prefConf?.getBoolean("hack_google_components", true) != false){
+        if (prefConf?.getBoolean("hack_google_components", true) != false) {
             prefixFilteredList.remove("com.google.")
             prefixFilteredList.remove("com.google.android.")
         }
-        if (prefConf?.getBoolean("hack_chromium", false) == true){
+        if (prefConf?.getBoolean("hack_chromium", false) == true) {
             prefixFilteredList.remove("org.chromium.content.browser.")
         }
-        if (prefConf?.getBoolean("hack_framework", false) == true){
+        if (prefConf?.getBoolean("hack_framework", false) == true) {
             prefixFilteredList.remove("de.robv.android")
             prefixFilteredList.remove("org.lsposed")
         }
@@ -69,8 +70,8 @@ class HookMain : IXposedHookLoadPackage, IXposedHookZygoteInit {
         override fun beforeHookedMethod(param: MethodHookParam) {
             val throwable = Throwable()
             if (doNotHack(throwable)) return
-            param.result = prefConf?.getString("language", "jp")?.let { language ->
-                val country = prefConf!!.getString("country", "ja")!!
+            param.result = prefConf?.getString("language", "ja")?.let { language ->
+                val country = prefConf!!.getString("country", "JP")!!
                 val variant = prefConf!!.getString("variant", "")!!
                 Locale(
                     language,
@@ -108,7 +109,44 @@ class HookMain : IXposedHookLoadPackage, IXposedHookZygoteInit {
             }
         )
 
-        YukiHookAPI.
+        XposedHelpers.findMethodExact(
+            "cn.cyanc.xposed.noregionlimits.ModuleStatus\$Status",
+            lpparam.classLoader,
+            "getXposedVersion"
+        )
+
+        XposedHelpers.findAndHookMethod(
+            "cn.cyanc.xposed.noregionlimits.ModuleStatus\$Status",
+            lpparam.classLoader,
+            "getXposedVersion",
+            object : XC_MethodReplacement() {
+                override fun replaceHookedMethod(param: MethodHookParam?): Any {
+                    return XposedBridge.getXposedVersion()
+                }
+            }
+        )
+
+        XposedHelpers.findMethodExact(
+            "cn.cyanc.xposed.noregionlimits.ModuleStatus\$Status",
+            lpparam.classLoader,
+            "getBridgeName"
+        )
+
+        XposedHelpers.findAndHookMethod(
+            "cn.cyanc.xposed.noregionlimits.ModuleStatus\$Status",
+            lpparam.classLoader,
+            "getBridgeName",
+            object : XC_MethodReplacement() {
+                override fun replaceHookedMethod(param: MethodHookParam?): Any {
+                    val cls = XposedBridge::class.java
+
+                    return runCatching {
+                        cls.fields.find { it.name == "TAG" }?.get(cls).toString()
+                            .takeIf { it.isNotBlank() }?.replace("Bridge", "")?.replace("-", "")
+                    }.getOrNull() ?: "invalid"
+                }
+            }
+        )
     }
 
     override fun initZygote(startupParam: StartupParam) {
@@ -120,7 +158,6 @@ class HookMain : IXposedHookLoadPackage, IXposedHookZygoteInit {
             "initDefault",
             ReplaceLocale { throwable: Throwable -> doNotHack(throwable) }
         )
-        XposedBridge.getXposedVersion()
     }
 
     /*override fun onHook() = encase {

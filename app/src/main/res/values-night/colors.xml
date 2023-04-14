@@ -5,5 +5,5 @@
     <color name="moduleCardViewBackgroundEnabled">@color/material_green_900</color>
     <color name="moduleCardViewBackgroundNotEnabled">@color/material_red_900</color>
     <color name="moduleCardViewForegroundEnabled">@color/material_green_100</color>
-    <color name="moduleCardViewForegroundNotEnabled">@color/material_red_200</color>
+    <color name="moduleCardViewForegroundNotEnabled">@color/material_red_50</color>
 </resources>

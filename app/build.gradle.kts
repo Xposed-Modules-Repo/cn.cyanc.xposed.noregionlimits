@@ -22,8 +22,8 @@ android {
         applicationId = "cn.cyanc.xposed.noregionlimits"
         minSdk = 28
         targetSdk = 33
-        versionCode = 1200
-        versionName = "v1.2.0"
+        versionCode = 1211
+        versionName = "v1.2.11"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations += setOf()
@@ -31,7 +31,8 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
@@ -63,9 +64,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // // 基础依赖
-    implementation("com.highcapable.yukihookapi:api:1.1.8")
+    // implementation("com.highcapable.yukihookapi:api:1.1.8")
     // ❗作为 Xposed 模块使用务必添加，其它情况可选
     compileOnly("de.robv.android.xposed:api:82")
     // ❗作为 Xposed 模块使用务必添加，其它情况可选
-    ksp("com.highcapable.yukihookapi:ksp-xposed:1.1.8")
+    // ksp("com.highcapable.yukihookapi:ksp-xposed:1.1.8")
 }

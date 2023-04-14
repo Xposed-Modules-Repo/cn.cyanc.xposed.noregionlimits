@@ -2,9 +2,12 @@
 <resources>
     <plurals name="module_version_format" translatable="false">
         <item quantity="one">%1$s</item>
+        <item quantity="two">%1$s (%2$d)</item>
         <item quantity="other">%1$s (%2$d)</item>
     </plurals>
     <plurals name="module_activator_format" translatable="false">
         <item quantity="one">Activated by %1$s</item>
+        <item quantity="two">Activated by %1$s API %2$d</item>
+        <item quantity="other">Activated by %1$s API %2$d</item>
     </plurals>
 </resources>
