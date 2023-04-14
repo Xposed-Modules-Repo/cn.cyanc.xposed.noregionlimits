@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Not From China</string>
+    <string name="app_desc">Solve that some app check your Locale to do behavior</string>
+    <string name="search_desc">Search your Language or Region…</string>
+    <string name="settings_name">Settings</string>
+    <string name="locale_settings">Current Locale | Language&amp;Country(&amp;Variant)</string>
+    <string name="language_name">Language</string>
+    <string name="country_name">Country</string>
+    <string name="variant_name">Variant</string>
+    <string name="hack_settings">Locale Hacks Configuration</string>
+    <string name="hack_android_switch">Hack android.*&amp; com.android.* classes</string>
+    <string name="hack_androidx_switch">Hack androidx classes</string>
+    <string name="hack_android_content_switch">Hack android.content.*&amp;android.view.* classes</string>
+    <string name="hack_google_components_switch">Hack com.google.*&amp;com.google.android.* classess</string>
+    <string name="hack_chromium_switch">Hack org.chromium.content.browser.* classes</string>
+    <string name="hack_framework_switch">Hack your Xposed Framework Classess</string>
+    <string name="module_status_default">Module Status</string>
+    <string name="module_status_enabled">Module enabled</string>
+    <string name="module_status_not_enabled">Module is not enabled</string>
+    <string name="module_version_default">v1.0</string>
+    <string name="module_not_enable_alert_title">Module is not enabled?</string>
+    <string name="module_not_enabled_alert_message">It seems this module isn\'t enabled. Enable it in your manager to use it.</string>
+</resources>

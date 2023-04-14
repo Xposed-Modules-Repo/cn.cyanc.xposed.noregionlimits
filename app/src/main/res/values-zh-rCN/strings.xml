@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">不要锁区</string>
+    <string name="app_desc">解决某些应用对于不同的 Locale 会有某些不同的行为的问题</string>
+    <string name="search_desc">搜索你的语言或区域…</string>
+    <string name="settings_name">设置</string>
+    <string name="locale_settings">当前 语言环境(区域) | 语言&amp;地区(&amp;变体)</string>
+    <string name="language_name">语言</string>
+    <string name="country_name">国家</string>
+    <string name="variant_name">变体</string>
+    <string name="hack_settings">语言环境(区域) 注入设置</string>
+    <string name="hack_android_switch">注入 android.*, com.android.*</string>
+    <string name="hack_androidx_switch">注入 androidx.*</string>
+    <string name="hack_android_content_switch">注入 android.content.*, android.view.*</string>
+    <string name="hack_google_components_switch">注入 com.google.*, com.google.android.*</string>
+    <string name="hack_chromium_switch">注入 org.chromium.content.browser.*</string>
+    <string name="hack_framework_switch">注入 Xposed framework classess</string>
+    <string name="module_status_default">模块状态</string>
+    <string name="module_status_enabled">模块已启用</string>
+    <string name="module_status_not_enabled">"模块未启用! "</string>
+    <string name="module_version_default">v1.0</string>
+    <string name="module_not_enable_alert_title">"模块未启用? "</string>
+    <string name="module_not_enabled_alert_message">看起来你并没有启用这个模块。请先在你的管理器中启用这个模块后再使用此模块。</string>
+</resources>

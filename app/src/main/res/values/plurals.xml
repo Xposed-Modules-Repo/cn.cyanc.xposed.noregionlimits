@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="module_version_format" translatable="false">
+        <item quantity="one">%1$s</item>
+        <item quantity="other">%1$s (%2$d)</item>
+    </plurals>
+    <plurals name="module_activator_format" translatable="false">
+        <item quantity="one">Activated by %1$s</item>
+    </plurals>
+</resources>

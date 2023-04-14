@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Not From China</string>
+    <string name="lang_def" translatable="false">lang</string>
+    <string name="country_def" translatable="false">country</string>
+    <string name="lang_display_def" translatable="false">display lang</string>
+    <string name="country_display_def" translatable="false">country display</string>
+    <string name="lang_tag_def" translatable="false">(tag)</string>
+    <string name="fab_about_desc" translatable="false">About</string>
+    <string name="app_desc">Locale speical behavior killer</string>
+    <string name="author" translatable="false">Cyan Changes</string>
+    <string name="search_desc">Search your lang or region</string>
+    <string name="settings_name">Settings</string>
+    <string name="locale_settings">locale conf</string>
+    <string name="language_name">language</string>
+    <string name="country_name">country</string>
+    <string name="variant_name">variant</string>
+    <string name="hack_settings">do not hacks</string>
+    <string name="hack_androidx_switch">hack androidx.*</string>
+    <string name="hack_android_content_switch">hack android.content.* and android.view.*</string>
+    <string name="hack_android_switch">hack android.* and com.android.*</string>
+    <string name="hack_google_components_switch">hack com.google.android.* and com.google.*</string>
+    <string name="hack_chromium_switch">hack org.chromium.content.browser.*</string>
+    <string name="hack_framework_switch">hook Xposed framework</string>
+    <string name="module_status_default">module status</string>
+    <string name="module_status_enabled">module status: enabled</string>
+    <string name="module_status_not_enabled">module status: not enabled</string>
+    <string name="module_version_default">module version</string>
+    <string name="module_hookframework_status_default" translatable="false">Activated by LSP API hso 1145</string>
+    <string name="module_not_enabled_alert_message">alert: seems module not enabled</string>
+    <string name="module_not_enable_alert_title">alert: module not enabled?</string>
+</resources>

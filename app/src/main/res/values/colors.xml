@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="moduleCardViewBackgroundEnabled">@color/material_green_500</color>
+    <color name="moduleCardViewBackgroundNotEnabled">@color/material_red_600</color>
+    <color name="moduleCardViewForegroundEnabled">@color/material_green_900</color>
+    <color name="moduleCardViewForegroundNotEnabled">@color/material_red_A400</color>
+</resources>

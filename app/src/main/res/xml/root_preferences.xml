@@ -1,0 +1,49 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/locale_settings">
+        <EditTextPreference
+            android:key="language"
+            android:title="@string/language_name"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:key="country"
+            android:title="@string/country_name"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:key="variant"
+            android:title="@string/variant_name"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/hack_settings">
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hack_android"
+            android:title="@string/hack_android_switch" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hack_androidx"
+            android:title="@string/hack_androidx_switch" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="hack_android_content"
+            android:title="@string/hack_android_content_switch" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hack_google_components"
+            android:title="@string/hack_google_components_switch" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hack_chromium"
+            android:title="@string/hack_chromium_switch" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hack_framework"
+            android:title="@string/hack_framework_switch" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
