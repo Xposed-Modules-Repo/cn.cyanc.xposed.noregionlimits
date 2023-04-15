@@ -90,6 +90,7 @@
             android:id="@+id/searchInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:hint="@android:string/search_go"
             app:endIconDrawable="@drawable/ic_cancel"
             app:endIconMode="clear_text"
